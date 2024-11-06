@@ -1,0 +1,26 @@
+<form class="repeat-form" [formGroup]="repeatForm">
+  <b>REPEAT:</b>
+  <input
+    [formControlName]="repeatFormControlName"
+    type="number"
+    placeholder="Repeat n times..."
+    min="0"
+    max="100" />
+</form>
+
+<div class="info">
+  @let l = generatorParam()?.length ?? 0;
+  @let t = repeatValue();
+  @let rawTemplate = isRawTemplate();
+  <p><b>RAW TEMPLATE</b> : {{ rawTemplate }}</p>
+  <p><b>TOTAL</b> : {{ l }} * {{ t }} = {{ l * t }}</p>
+</div>
+
+@if (rawTemplate) {
+  <app-table-raw [repeat]="repeatValue()" [data]="data()" />
+} @else {
+  @for (i of repeatRange(); track $index) {
+    N°{{ i }}
+    <app-table [data]="data()"></app-table>
+  }
+}

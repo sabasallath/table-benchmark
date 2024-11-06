@@ -1,0 +1,7 @@
+<p>
+  <b>SEED: {{ generatorParam()?.seed }}</b>
+</p>
+<app-table-repeat
+  [data]="data()"
+  [isRawTemplate]="isRawTemplate()"
+  [generatorParam]="generatorParam()"></app-table-repeat>

@@ -1,0 +1,25 @@
+@let tableData = data();
+@if (tableData) {
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          @for (cell of Object.values(tableData.headerData); track $index) {
+            <th>{{ cell }}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of tableData.rowData; track $index) {
+          <tr>
+            @for (cell of Object.values(row); track $index) {
+              <td>{{ cell }}</td>
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+} @else {
+  Loading...
+}

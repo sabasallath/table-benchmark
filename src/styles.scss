@@ -1,1 +1,63 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'sass';
+
+:root {
+  --color-table-container-border: black;
+  --color-table-container-border-raw: red;
+  --color-table-thead-bg: #e3e3e3;
+  --color-table-thead-border: black;
+  --color-table-thead-th-border: #6d6d6d;
+  --color-table-tbody-td-border: #6d6d6d;
+  --color-table-row-light-bg: #ffffff;
+  --color-table-row-dark-bg: #f1f1f1;
+  --color-link: #0010ca;
+}
+
+body {
+  padding: 0 4rem;
+}
+
+a {
+  color: var(--color-link);
+}
+
+.table-container {
+  width: fit-content;
+  overflow-x: auto;
+  border: solid 1px var(--color-table-container-border);
+
+  &.raw {
+    border: solid 1px var(--color-table-container-border-raw);
+  }
+}
+
+table {
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 0.25rem 0.5rem;
+  }
+
+  thead {
+    background-color: var(--color-table-thead-bg);
+    border-bottom: solid 1px var(--color-table-thead-th-border);
+
+    th:not(:last-child) {
+      border-right: solid 1px var(--color-table-thead-th-border);
+    }
+  }
+
+  tbody {
+    tr:nth-child(odd) {
+      background-color: var(--color-table-row-light-bg);
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--color-table-row-dark-bg);
+    }
+
+    td:not(:last-child) {
+      border-right: solid 1px var(--color-table-tbody-td-border);
+    }
+  }
+}
