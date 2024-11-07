@@ -1,6 +1,9 @@
 @let tableData = data();
 @if (tableData) {
-  <div class="table-container">
+  <div
+    class="table-container"
+    (mouseenter)="activateTableInteraction()"
+    (mouseleave)="deactivateTableInteraction()">
     <table>
       <thead>
         <tr>
@@ -9,15 +12,41 @@
           }
         </tr>
       </thead>
-      <tbody>
-        @for (row of tableData.rowData; track $index) {
-          <tr>
-            @for (cell of Object.values(row); track $index) {
-              <td>{{ cell }}</td>
-            }
-          </tr>
-        }
-      </tbody>
+      @if (isActive) {
+        <tbody>
+          @for (row of tableData.rowData; track $index) {
+            <tr>
+              @for (cell of Object.values(row); track $index) {
+                <td (click)="onClickHandler($event)">{{ cell }}</td>
+              }
+            </tr>
+          }
+        </tbody>
+      } @else {
+        <tbody class="inactive">
+          @for (row of tableData.rowData; track $index) {
+            <tr>
+              @for (cell of Object.values(row); track $index) {
+                <td>{{ cell }}</td>
+              }
+            </tr>
+          }
+        </tbody>
+      }
+
+      <!--      <tbody>-->
+      <!--        @for (row of tableData.rowData; track $index) {-->
+      <!--          <tr>-->
+      <!--            @for (cell of Object.values(row); track $index) {-->
+      <!--              @if (isActive) {-->
+      <!--                <td (click)="onClickHandler($event)">{{ cell }}</td>-->
+      <!--              } @else {-->
+      <!--                <td class="inactive">{{ cell }}</td>-->
+      <!--              }-->
+      <!--            }-->
+      <!--          </tr>-->
+      <!--        }-->
+      <!--      </tbody>-->
     </table>
   </div>
 } @else {

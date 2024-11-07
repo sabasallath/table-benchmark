@@ -19,8 +19,16 @@
 @if (rawTemplate) {
   <app-table-raw [repeat]="repeatValue()" [data]="data()" />
 } @else {
-  @for (i of repeatRange(); track $index) {
+  @for (i of repeatRange(); track $index; let first = $first) {
     N°{{ i }}
-    <app-table [data]="data()"></app-table>
+    @if (!first) {
+      @defer (on viewport) {
+        <app-table [data]="data()"></app-table>
+      } @placeholder {
+        <div [style.height]="l * 60 + 'px'"></div>
+      }
+    } @else {
+      <app-table [data]="data()"></app-table>
+    }
   }
 }

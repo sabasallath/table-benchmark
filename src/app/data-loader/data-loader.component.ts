@@ -1,4 +1,12 @@
-import { Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  OnDestroy,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { GeneratorParam, TableData } from '../app.type';
@@ -12,6 +20,7 @@ import { TableComponent } from '../table/table.component';
   imports: [TableComponent, TableRepeatComponent],
   templateUrl: './data-loader.component.html',
   styleUrl: './data-loader.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DataLoaderComponent implements OnInit, OnDestroy {
   route = inject(ActivatedRoute);

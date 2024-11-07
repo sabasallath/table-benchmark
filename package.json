@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "dev": "ng serve",
+    "preview": "ng serve --configuration production --port 5555",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

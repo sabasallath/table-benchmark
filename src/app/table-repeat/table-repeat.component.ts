@@ -1,4 +1,12 @@
-import { Component, computed, inject, input, OnInit, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { GeneratorParam, TableData } from '../app.type';
@@ -11,9 +19,10 @@ import { TableComponent } from '../table/table.component';
   imports: [ReactiveFormsModule, TableComponent, TableRawComponent],
   templateUrl: './table-repeat.component.html',
   styleUrl: './table-repeat.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableRepeatComponent implements OnInit {
-  private static readonly initialRepeatValue = 10;
+  private static readonly initialRepeatValue = 50;
   repeatFormControlName = 'repeatInput';
   fb = inject(FormBuilder);
   repeatForm!: FormGroup;

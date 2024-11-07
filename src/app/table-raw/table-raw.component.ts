@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Cell, HeaderData, TableData } from '../app.type';
 
 /**
@@ -29,6 +29,7 @@ import { Cell, HeaderData, TableData } from '../app.type';
   imports: [],
   templateUrl: './table-raw.component.html',
   styleUrl: './table-raw.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableRawComponent {
   data = input<TableData | null>();
